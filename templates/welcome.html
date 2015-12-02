@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+{% block head %}
+  <script type="text/javascript">var x = 1;</script>
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+	<p>Welcome, {{ username }}! - <a href="{{ url_for('logout')}}">logout</a></p>
+	<div>
+		<h2> Display the list of entries </h2>
+		<p><a href="{{ url_for('viewaddress')}}"><h3>View list of entries</h3></a></p>
+	</div>
+	<div>
+	<h2>Enter new address into the system </h2>
+	<form action="{{ url_for('editaddress')}}" method="POST">
+		<div>
+		<form>
+		 	<p>
+	      Place address: <input type="text" name="postaladdress" />
+	    </p>
+	    <p>
+	      Phone number: <input type="text" name="phonenumber" />
+	     </form>
+	    </p>
+	   	<button style="width:100px;height:25px"type="Submit">Save</button>
+		</div>
+	</form>
+	</div>
+	<br>
+{% endblock %}

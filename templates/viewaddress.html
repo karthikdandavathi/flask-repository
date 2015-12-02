@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}View List of addresses {% endblock %}
+
+{% block content %}
+<div>
+<h3> <b>List of entries</b> </h3>
+{% for input in data %}
+<p>{{ input }}</p>
+{% endfor %}
+</div>
+<div>
+<p>
+	<a href="javascript:history.back()">Go Back</a>
+</p>
+</div>
+<br>
+{% endblock %}
