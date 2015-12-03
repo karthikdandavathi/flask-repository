@@ -71,6 +71,23 @@ def editaddress():
     #app.logger("data from edit address "+str(data))
     return render_template('editaddress.html')
 
+@app.route('/deleteaddress',methods=['GET','POST'])
+def deleteaddress():
+    MYSQL_DATABASE_HOST = os.getenv('IP','localhost')
+    MYSQL_DATABASE_USER = 'root'
+    MYSQL_DATABASE_PASSWORD = ''
+    MYSQL_DATABASE_DB = 'test'
+    conn = pymysql.connect(
+        host=MYSQL_DATABASE_HOST, 
+        user=MYSQL_DATABASE_USER, 
+        passwd=MYSQL_DATABASE_PASSWORD, 
+        db=MYSQL_DATABASE_DB)
+    addressid = request.form.get('addressid')
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM addressbook WHERE `id`='%s'" % addressid)
+    conn.commit()
+    return render_template('deleteaddress.html')
+
 def valid_login(username, password):
     #mysql
     MYSQL_DATABASE_HOST = os.getenv('IP','localhost')

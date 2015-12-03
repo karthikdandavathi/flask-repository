@@ -11,15 +11,16 @@
 	<p>Welcome, {{ username }}! - <a href="{{ url_for('logout')}}">logout</a></p>
 	<div>
 		<h2> Display the list of entries </h2>
-		<p><a href="{{ url_for('viewaddress')}}"><h3>View list of entries</h3></a></p>
+		<a href="{{ url_for('viewaddress')}}"><h3>View list of entries</h3></a>
 	</div>
+	<br>
 	<div>
 	<h2>Enter new address into the system </h2>
 	<form action="{{ url_for('editaddress')}}" method="POST">
 		<div>
 		<form>
 		 	<p>
-	      Place address: <input type="text" name="postaladdress" />
+	      Place address  :  <input type="text" name="postaladdress" />
 	    </p>
 	    <p>
 	      Phone number: <input type="text" name="phonenumber" />
@@ -27,6 +28,14 @@
 	    </p>
 	   	<button style="width:100px;height:25px"type="Submit">Save</button>
 		</div>
+	</form>
+	<br>
+	<h2> Delete an address record </h2>
+	<form action="{{ url_for('deleteaddress')}}" method="POST">
+		<p>
+			Id of Address: <input type="text" name="addressid">
+		</p>
+		<button style="width:100px;height:25px"type="Submit">Delete</button>
 	</form>
 	</div>
 	<br>
